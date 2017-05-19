@@ -1,1 +1,1 @@
-docker run -it -v /data --name data-mysql busybox
+docker create -v /var/lib/mysql --name data-mysql busybox
