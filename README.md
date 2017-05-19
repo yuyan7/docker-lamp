@@ -12,3 +12,9 @@ docker-compose logs
 docker-compose stop
 ## 関係するコンテナをまとめて削除
 docker-compose rm
+
+## コンテナ内にホストのファイルをコピー
+docker cp <ホストのコピー元> <コンテナID>:<コンテナ内のコピー先>
+
+php/source内にドキュメントルートに配置したいソースコードを置く。
+mysqlコンテナはphpコンテナからはホスト名「mysql」で見れる。
