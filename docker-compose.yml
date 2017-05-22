@@ -1,14 +1,19 @@
-mysql:
-  image: mysql
-  volumes_from:
-    - data-mysql
-  ports:
-    - "3306:3306"
-  environment:
-    MYSQL_ROOT_PASSWORD: root
-php:
-  build: php
-  links:
-    - mysql:mysql
-  ports:
-    - "80:80"
+version: '2'
+volumes:
+  mysql:
+    driver: 'local'
+services:
+  mysql:
+    image: mysql
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  php:
+    build: php
+    links:
+      - mysql:mysql
+    ports:
+      - "80:80"
