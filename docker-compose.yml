@@ -3,6 +3,14 @@ volumes:
   mysql:
     driver: 'local'
 services:
+  loadbalancer:
+    image: haproxy:alpine
+    links:
+      - php
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy/
+    ports:
+      - "80:80"
   mysql:
     image: mysql
     volumes:
@@ -15,5 +23,3 @@ services:
     build: php
     links:
       - mysql:mysql
-    ports:
-      - "80:80"
